@@ -1,14 +1,31 @@
 const loadLevels = () => {
   fetch("https://openapi.programming-hero.com/api/levels/all")
     .then((res) => res.json())
-    .then((data) => displayLevels(data.data));
+    .then((data) => {
+      displayLevels(data.data);
+    });
 };
 
 const loadCourses = (level_no) => {
   const url = `https://openapi.programming-hero.com/api/level/${level_no}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayCourses(data.data));
+    .then((data) => {
+      removeActiveClass();
+      const clickedButton = document.getElementById(
+        `lesson-button-${level_no}`,
+      );
+      clickedButton.classList.add("btn-active");
+      displayCourses(data.data);
+      //   console.log(clickedButton);
+    });
+};
+
+const removeActiveClass = () => {
+  const buttons = document.querySelectorAll(".active-btn");
+  buttons.forEach((button) => {
+    button.classList.remove("btn-active");
+  });
 };
 
 const displayCourses = (courses) => {
@@ -60,7 +77,7 @@ const displayLevels = (levels) => {
   levels.forEach((level) => {
     const levelDiv = document.createElement("div");
     levelDiv.innerHTML = `
-                  <button onclick = "loadCourses(${level.level_no})" class="btn btn-outline btn-primary">
+                  <button id="lesson-button-${level.level_no}" onclick = "loadCourses(${level.level_no})" class="btn btn-outline btn-primary active-btn">
                   <i class="fa-solid fa-book-open-reader"></i>Learn - ${level.level_no}
                   </button>
       `;
