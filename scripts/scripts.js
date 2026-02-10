@@ -25,7 +25,7 @@ const displayCourses = (courses) => {
         >
           <h2 class="text-2xl font-bold mb-4">${course.word}</h2>
           <p class="font-semibold">Meaning/Pronounciation</p>
-          <div class="text-2xl font-medium font-bangla">"${course.meaning}"</div>
+          <div class="text-2xl font-medium font-bangla">"${course.meaning} / ${course.pronunciation}"</div>
           <div class="flex justify-between">
             <button class="btn btn-outline btn-primary">
               <i class="fa-solid fa-circle-info"></i>
