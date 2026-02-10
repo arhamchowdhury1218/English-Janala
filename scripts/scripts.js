@@ -13,15 +13,28 @@ const loadCourses = (level_no) => {
 
 const displayCourses = (courses) => {
   console.log(courses);
-  const coursesContainer = document.getElementById("courses-container");
+  const coursesContainer = document.getElementById("word-container");
 
   coursesContainer.innerHTML = "";
   courses.forEach((course) => {
     const courseDiv = document.createElement("div");
     courseDiv.innerHTML = `
-                  <button class="btn btn-outline btn-secondary">
-                  ${course.word}
-                  </button>
+        <!-- Words will be dynamically added here -->
+        <div
+          class="bg-white p-6 rounded-lg shadow-md text-center py-10 px-5 space-y-4"
+        >
+          <h2 class="text-2xl font-bold mb-4">${course.word}</h2>
+          <p class="font-semibold">Meaning/Pronounciation</p>
+          <div class="text-2xl font-medium font-bangla">"${course.meaning}"</div>
+          <div class="flex justify-between">
+            <button class="btn btn-outline btn-primary">
+              <i class="fa-solid fa-circle-info"></i>
+            </button>
+            <button class="btn btn-outline btn-primary">
+              <i class="fa-solid fa-volume-high"></i>
+            </button>
+          </div>
+        </div>
       `;
     coursesContainer.appendChild(courseDiv);
   });
