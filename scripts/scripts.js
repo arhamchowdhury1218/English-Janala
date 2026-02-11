@@ -144,3 +144,26 @@ const displayLevels = (levels) => {
 };
 
 loadLevels();
+
+document.getElementById("btn-search").addEventListener("click", () => {
+  removeActiveClass();
+  const searchInput = document.getElementById("input-search");
+  const searchValue = searchInput.value.trim().toLowerCase();
+  console.log(searchInput);
+
+  fetch(`https://openapi.programming-hero.com/api/words/all`)
+    .then((res) => res.json())
+    .then((data) => {
+      const allWords = data.data;
+      const filterWords = allWords.filter(
+        (word) => word.word.toLowerCase() === searchValue,
+      );
+      displayCourses(filterWords);
+    });
+
+  //   if (searchInput.trim() === "") {
+  //     alert("Please enter a word to search.");
+  //     return;
+  //   }
+  //   loadWordDetails(searchInput);
+});
