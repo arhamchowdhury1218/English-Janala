@@ -51,14 +51,14 @@ const displayCourses = (courses) => {
     courseDiv.innerHTML = `
         <!-- Words will be dynamically added here -->
         <div
-          class="bg-white p-6 rounded-lg shadow-md text-center py-10 px-5 space-y-4"
+          class="bg-white p-6 rounded-lg shadow-md text-center py-10 px-5 space-y-4 h-full flex flex-col "
         >
           <h2 class="text-2xl font-bold mb-4">${course.word ? course.word : "No word available"}</h2>
           <p class="font-semibold">Meaning/Pronounciation</p>
           <div class="text-2xl font-medium font-bangla">"${course.meaning ? course.meaning : "No meaning available"} / ${course.pronunciation ? course.pronunciation : "No pronunciation available"}"</div>
           <div class="flex justify-between">
             <button class="btn btn-outline btn-primary">
-              <i class="fa-solid fa-circle-info"></i>
+              <i onclick="my_modal_5.showModal()" class="fa-solid fa-circle-info"></i>
             </button>
             <button class="btn btn-outline btn-primary">
               <i class="fa-solid fa-volume-high"></i>
