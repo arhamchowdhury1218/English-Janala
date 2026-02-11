@@ -2,6 +2,11 @@ const createElements = (arr) => {
   const htmlElements = arr.map((item) => `<span class = "btn">${item}</span>`);
   return htmlElements.join("");
 };
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
 
 const manageSpinner = (isLoading) => {
   const spinner = document.getElementById("loading-section");
@@ -117,7 +122,7 @@ const displayCourses = (courses) => {
             <button class="btn btn-outline btn-primary">
               <i onclick="loadWordDetails('${course?.id}')" class="fa-solid fa-circle-info"></i>
             </button>
-            <button class="btn btn-outline btn-primary">
+            <button onclick="pronounceWord('${course?.word}')" class="btn btn-outline btn-primary">
               <i class="fa-solid fa-volume-high"></i>
             </button>
           </div>
