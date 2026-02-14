@@ -119,8 +119,8 @@ const displayCourses = (courses) => {
           <p class="font-semibold">Meaning/Pronounciation</p>
           <div class="text-2xl font-medium font-bangla">"${course.meaning ? course.meaning : "No meaning available"} / ${course.pronunciation ? course.pronunciation : "No pronunciation available"}"</div>
           <div class="flex justify-between">
-            <button class="btn btn-outline btn-primary">
-              <i onclick="loadWordDetails('${course?.id}')" class="fa-solid fa-circle-info"></i>
+            <button onclick="loadWordDetails('${course?.id}')" class="btn btn-outline btn-primary">
+              <i  class="fa-solid fa-circle-info"></i>
             </button>
             <button onclick="pronounceWord('${course?.word}')" class="btn btn-outline btn-primary">
               <i class="fa-solid fa-volume-high"></i>
